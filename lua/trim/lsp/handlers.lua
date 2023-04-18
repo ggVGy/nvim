@@ -53,7 +53,7 @@ local function lsp_keymaps(bufnr)
     vim.cmd([[
       augroup lsp_buf_format
         au! BufWritePre <buffer>
-        autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()
+        autocmd BufWritePre <buffer> :lua vim.lsp.buf.format()
       augroup END
     ]])
 end
@@ -66,7 +66,7 @@ local function lsp_onsave_format(client, bufnr)
             group = augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.formatting_sync()
+                vim.lsp.buf.format()
             end,
         })
     end
